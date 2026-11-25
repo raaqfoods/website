@@ -538,7 +538,7 @@ document.getElementById('quote').addEventListener('submit',e=>{
   const mail=()=>{location.href='mailto:info@raaqfoods.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body)};
   if(f._honey&&f._honey.value)return;
   btn.disabled=true;const lab=btn.textContent;btn.textContent=t('f_sending');
-  fetch('https://formsubmit.co/ajax/info@raaqfoods.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+  fetch('https://formsubmit.co/ajax/d9e398e8aaf3931c3813616cd3836e2f',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
     body:JSON.stringify({_subject:subj,_template:'table',_replyto:f.email.value,Name:f.name.value,Company:f.company.value,Email:f.email.value,Destination:f.country.value,Product:prod,Volume:vol,Notes:f.notes.value,Language:L,Page:location.href})})
   .then(r=>r.ok?r.json():Promise.reject()).then(j=>{if(j&&String(j.success)!=='false'){f.reset();note.textContent=t('f_ok');note.hidden=false;btn.textContent=lab;btn.disabled=false;note.focus()}else return Promise.reject()})
   .catch(()=>{btn.textContent=lab;btn.disabled=false;err.textContent=t('f_fail');err.hidden=false;setTimeout(mail,900)});
